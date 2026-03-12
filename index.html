@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotesApp | Organize Your Thoughts</title>
+    <style>
+        :root {
+            --primary: #4a90e2;
+            --dark: #333;
+            --light: #f4f4f9;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: var(--light);
+            color: var(--dark);
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
+
+        /* Container & Sections */
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .page { display: none; }
+        .active { display: block; }
+
+        /* Form Styling */
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover { opacity: 0.8; }
+
+        /* Notes Specific */
+        .note-card {
+            border-left: 5px solid var(--primary);
+            background: #f9f9f9;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">NotesApp</div>
+    <div>
+        <button onclick="showPage('home')">Home</button>
+        <button onclick="showPage('login')">Login</button>
+        <button onclick="showPage('register')">Sign Up</button>
+    </div>
+</nav>
+
+<div class="container">
+    
+    <section id="home" class="page active">
+        <h1>Welcome to NotesApp</h1>
+        <p>Your simple, secure place to keep track of your daily tasks and brilliant ideas.</p>
+        <button onclick="showPage('register')">Get Started Free</button>
+    </section>
+
+    <section id="register" class="page">
+        <h2>Create Account</h2>
+        <input type="text" placeholder="Full Name">
+        <input type="email" placeholder="Email Address">
+        <input type="password" placeholder="Create Password">
+        <button onclick="showPage('notes')">Register</button>
+    </section>
+
+    <section id="login" class="page">
+        <h2>Login</h2>
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Password">
+        <button onclick="showPage('notes')">Login</button>
+    </section>
+
+    <section id="notes" class="page">
+        <h2>My Notes</h2>
+        <div style="display:flex; gap: 10px;">
+            <input type="text" id="noteInput" placeholder="Write a quick note...">
+            <button onclick="addNote()">Add</button>
+        </div>
+        <div id="notesList">
+            <div class="note-card">Example: Remember to push code to GitHub!</div>
+        </div>
+        <br>
+        <button style="background: #e74c3c;" onclick="showPage('home')">Logout</button>
+    </section>
+
+</div>
+
+<script>
+    function showPage(pageId) {
+        // Hide all pages
+        document.querySelectorAll('.page').forEach(page => {
+            page.classList.remove('active');
+        });
+        // Show selected page
+        document.getElementById(pageId).classList.add('active');
+    }
+
+    function addNote() {
+        const input = document.getElementById('noteInput');
+        if(input.value.trim() !== "") {
+            const list = document.getElementById('notesList');
+            const newNote = document.createElement('div');
+            newNote.className = 'note-card';
+            newNote.innerText = input.value;
+            list.prepend(newNote);
+            input.value = "";
+        }
+    }
+</script>
+
+</body>
+</html>

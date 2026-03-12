@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Notes - Signup</title>
+    <style>
+
+        body{
+            font-family: Arial;
+            background-color:#f2f2f2;
+        }
+
+        .container{
+            width:350px;
+            margin:50px auto;
+            padding:20px;
+            background:white;
+            border-radius:5px;
+            box-shadow:0px 0px 10px gray;
+        }
+
+        h2{
+            text-align:center;
+        }
+
+        input, select{
+            width:100%;
+            padding:8px;
+            margin:8px 0;
+        }
+
+        button{
+            width:100%;
+            padding:10px;
+            background:#2196F3;
+            color:white;
+            border:none;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#1976D2;
+        }
+
+        .link{
+            text-align:center;
+            margin-top:10px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Student Registration</h2>
+
+<form>
+
+<input type="text" placeholder="Full Name" required>
+
+<input type="text" placeholder="USN" required>
+
+<input type="email" placeholder="Email" required>
+
+<select required>
+<option value="">Select Stream</option>
+<option>CSE</option>
+<option>ISE</option>
+<option>ECE</option>
+<option>EEE</option>
+<option>ME</option>
+<option>Civil</option>
+</select>
+
+<select required>
+<option value="">Select Semester</option>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+</select>
+
+<input type="password" placeholder="Create Password" required>
+
+<input type="password" placeholder="Confirm Password" required>
+
+<button type="submit">Register</button>
+
+</form>
+
+<div class="link">
+<p>Already have an account? <a href="login.html">Login</a></p>
+</div>
+
+</div>
+
+</body>
+</html>
